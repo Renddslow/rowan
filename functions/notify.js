@@ -7,6 +7,8 @@ exports.handler = async (event, context) => {
 
     await client.messages.create({
         body: `The ${family} family is coming to Rowan's party! They are bringing ${headcount} guests.`,
+        from: '+14023789202',
+        to: '+14028850620',
     });
 
     return {
