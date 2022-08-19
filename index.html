@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Rowan's 1st Birthday Party</title>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap');
+
+            body {
+                background: #1b2f38;
+                color: #a57f43;
+                font-size: 24px;
+            }
+
+            * {
+                font-weight: 400;
+                font-family: 'DM Serif Display', serif;
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            #wrapper {
+                display: block;
+                max-width: 450px;
+                width: 100%;
+                padding: 24px;
+                margin: 0 auto;
+            }
+
+            .card {
+                display: block;
+                width: 100%;
+                overflow: hidden;
+                position: relative;
+                aspect-ratio: 3 / 4;
+                border: 4px solid #a57f43;
+                margin-bottom: 48px;
+            }
+
+            .card img {
+                width: 100%;
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                object-fit: cover;
+            }
+
+            h1 {
+                font-size: 40px;
+                text-align: center;
+                margin-bottom: 32px;
+            }
+
+            strong {
+                color: #efefef;
+                text-decoration: underline;
+                text-decoration-color: #a57f43;
+            }
+
+            .row {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, max-content));
+                width: max-content;
+                margin: 0 auto 32px;
+                grid-gap: 32px;
+                transform: scaleY(1.7) scaleX(0.8);
+            }
+
+            .divider {
+                display: block;
+                width: 12px;
+                height: 12px;
+                display: block;
+                background: #fff;
+                transform: rotate(45deg);
+            }
+
+            form {
+                width: 100%;
+                border: 4px solid #a57f43;
+                background: #fff;
+                padding: 24px;
+            }
+
+            .card ~ p {
+                margin-bottom: 48px;
+            }
+
+            form p {
+                font-size: 16px;
+                margin-bottom: 24px;
+            }
+
+            .form-control:not(:last-child) {
+                margin-bottom: 18px;
+            }
+
+            label {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+                font-weight: 800;
+                font-size: 14px;
+                display: block;
+                margin-bottom: 8px;
+            }
+
+            input {
+                font-size: 16px;
+                width: 100%;
+                display: block;
+                padding: 8px 12px;
+            }
+
+            button {
+                background: #a57f43;
+                font-size: 18px;
+                padding: 8px 12px;
+                border: 0;
+                color: #fff;
+                margin-left: auto;
+                display: block;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrapper">
+            <h1>“I want always to be a boy and to have fun!”</h1>
+            <div class="row">
+                <div class="divider"></div>
+                <div class="divider"></div>
+            </div>
+            <article class="card">
+                <img src="https://i.imgur.com/FFuTbFg.jpg" alt="Rowan dressed as Peter Pan, bracing himself on a chair holding pixie dust" />
+            </article>
+            <p>Set off with us, second star to the right and straight on till morning as we celebrate Rowan's <strong>1st birthday</strong>.
+
+            <form id="rsvp">
+                <div id="form-body">
+                    <p>Want to never grow up with us? Let us know you'll be there so we can have an accurate headcount.</p>
+                    <div class="form-control">
+                        <label for="family-name">Family Name</label>
+                        <input type="text" id="family-name" name="family" autocomplete="family-name" />
+                    </div>
+                    <div class="form-control">
+                        <label for="headcount">How many are coming with you (a guess is fine)?</label>
+                        <input type="number" id="headcount" name="headcount" />
+                    </div>
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+        <script>
+            (() => {
+                document.getElementById('rsvp').addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const headcount = e.target.headcount.value;
+                    const family = e.target.family.value;
+
+                    document.querySelector('form button').innerText = 'Submitting...';
+                    document.querySelector('form button').disabled = true;
+
+                    fetch('/.netlify/functions/notify', {
+                        method: 'POST',
+                        body: JSON.stringify({
+                            headcount,
+                            family
+                        }),
+                    }).then(() => {
+                        document.getElementById('form-body').innerHTML = '<p>Thanks for letting us know. Excited to see you there!</p>';
+                    })
+                });
+            })();
+        </script>
+    </body>
+</html>
