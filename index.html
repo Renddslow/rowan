@@ -5,17 +5,21 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Rowan's 1st Birthday Party</title>
         <style>
-            @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap');
+            :root {
+                --primary: #fdc50d;
+                --secondary: #007EA7;
+                --text: #08080a;
+            }
 
             body {
-                background: #1b2f38;
-                color: #a57f43;
+                background: var(--primary);
+                color: var(--text);
                 font-size: 24px;
             }
 
             * {
-                font-weight: 400;
-                font-family: 'DM Serif Display', serif;
+                font-weight: 600;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
                 margin: 0;
                 padding: 0;
                 box-sizing: border-box;
@@ -34,13 +38,14 @@
                 width: 100%;
                 overflow: hidden;
                 position: relative;
-                aspect-ratio: 3 / 4;
-                border: 4px solid #a57f43;
+                aspect-ratio: 1 / 1;
+                border: 4px solid var(--text);
                 margin-bottom: 48px;
             }
 
             .card img {
                 width: 100%;
+                height: 100%;
                 position: absolute;
                 top: 0;
                 bottom: 0;
@@ -51,38 +56,29 @@
 
             h1 {
                 font-size: 40px;
+                font-weight: 800;
                 text-align: center;
                 margin-bottom: 32px;
             }
 
+            span.accent {
+                color: #631A86;
+                font-weight: 800;
+            }
+
             strong {
-                color: #efefef;
-                text-decoration: underline;
-                text-decoration-color: #a57f43;
-            }
-
-            .row {
-                display: grid;
-                grid-template-columns: repeat(2, minmax(0, max-content));
-                width: max-content;
-                margin: 0 auto 32px;
-                grid-gap: 32px;
-                transform: scaleY(1.7) scaleX(0.8);
-            }
-
-            .divider {
+                background: var(--secondary);
+                color: var(--text);
+                border: 2px solid var(--text);
+                padding: 12px;
+                font-weight: 800;
                 display: block;
-                width: 12px;
-                height: 12px;
-                display: block;
-                background: #fff;
-                transform: rotate(45deg);
+                max-width: fit-content;
             }
 
             form {
                 width: 100%;
-                border: 4px solid #a57f43;
-                background: #fff;
+                border: 4px solid var(--text);
                 padding: 24px;
             }
 
@@ -100,7 +96,6 @@
             }
 
             label {
-                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
                 font-weight: 800;
                 font-size: 14px;
                 display: block;
@@ -115,36 +110,102 @@
             }
 
             button {
-                background: #a57f43;
+                color: var(--text);
                 font-size: 18px;
                 padding: 8px 12px;
-                border: 0;
-                color: #fff;
+                background: var(--secondary);
                 margin-left: auto;
                 display: block;
                 cursor: pointer;
+                border: 2px solid var(--text);
+            }
+
+            .buckle-row {
+                position: relative;
+                height: 150px;
+                padding: 12px;
+                width: 150%;
+                margin-left: -25%;
+                overflow-x: hidden;
+            }
+
+            .buckle {
+                width: 160px;
+                position: absolute;
+            }
+
+            .buckle:first-child {
+                width: 146px;
+                left: 33%;
+                top: 9px;
+            }
+
+            .buckle:last-child {
+                right: 33%;
+
+            }
+
+            .buckle-row.animate .buckle:first-child {
+                animation: 0.4s ease-in buckle_left;
+            }
+
+            .buckle-row.animate .buckle:last-child {
+                animation: 0.4s ease-in buckle_right;
+            }
+
+            @keyframes buckle_left {
+                0% {
+                    transform: translateX(-100%);
+                }
+
+                100% {
+                    transform: translateX(0);
+                }
+            }
+
+            @keyframes buckle_right {
+                0% {
+                    transform: translateX(100%);
+                }
+
+                100% {
+                    transform: translateX(0);
+                }
             }
         </style>
     </head>
     <body>
         <div id="wrapper">
-            <h1>“I want always to be a boy and to have fun!”</h1>
-            <div class="row">
-                <div class="divider"></div>
-                <div class="divider"></div>
+            <h1>“Buckle up! I'm <span class="accent">two</span>!”</h1>
+            <div class="buckle-row">
+                <div class="buckle">
+                    <svg id="a" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 75.38 54.63"><rect x="1" y="4.3" width="11.98" height="46.03" transform="translate(13.98 54.63) rotate(-180)" fill="#231f20" stroke="#fdc614" stroke-miterlimit="10" stroke-width="2"/><path d="M74.38,32.5v-10.37H24.58v-4.71h43.91v-6.54h-.19c-1.32-5.66-6.39-9.89-12.45-9.89s-11.13,4.22-12.45,9.89H24.58v-3.4H12.98V47.15h11.6v-3.4h18.82c1.32,5.66,6.39,9.89,12.45,9.89s11.13-4.22,12.45-9.89h.19v-6.54H24.58v-4.71h49.8Z" fill="#231f20" stroke="#fdc614" stroke-miterlimit="10" stroke-width="2"/></svg>
+                </div>
+                <div class="buckle">
+                    <svg id="a" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 82.69 51.13"><path d="M48.94,1c-1.43,8.24-8.59,14.52-17.24,14.52S15.88,9.24,14.46,1H1V50.13H14.46c1.43-8.24,8.59-14.52,17.24-14.52s15.82,6.28,17.24,14.52h20.76V1h-20.76Z" fill="#231f20" stroke="#fdc614" stroke-miterlimit="10" stroke-width="2"/><rect x="69.7" y="2.55" width="11.98" height="46.03" fill="#231f20" stroke="#fdc614" stroke-miterlimit="10" stroke-width="2"/></svg>
+                </div>
             </div>
             <article class="card">
-                <img src="https://i.imgur.com/FFuTbFg.jpg" alt="Rowan dressed as Peter Pan, bracing himself on a chair holding pixie dust" />
+                <img src="/IMG_5446.jpg" alt="Rowan playing at the playground" />
             </article>
-            <p>Set off with us, second star to the right and straight on till morning as we celebrate Rowan's <strong>1st birthday</strong>.
-            <p><strong>Saturday, September 10th at 4:00pm</strong></p>
+            <p>Rowan's favorite thing to do right now is play with buckles. Whether that's buckles on highchair, car seat, or an activity mat. If it can click, Rowan wants to buckle it. Join us as we celebrate Rowan's <span class="accent">2nd birthday</span>.
+            <p><strong>Saturday, September 9th at 5:00pm</strong></p>
             <p>8234 N 167th Street<br />Bennington, NE 68007</p>
             <p>Light snacks and birthday treats will be provided</p>
-            <p><strong>Please do not bring gifts. We just want to celebrate Rowan's 1 year and thank each of you for helping us reach this milestone.</strong></p>
+            <p><strong>Please do not bring gifts. We just want to celebrate Rowan's 2nd year and thank each of you for helping us reach this milestone.</strong></p>
+
+            <div class="buckle-row">
+                <div class="buckle">
+                    <svg id="a" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 75.38 54.63"><rect x="1" y="4.3" width="11.98" height="46.03" transform="translate(13.98 54.63) rotate(-180)" fill="#231f20" stroke="#fdc614" stroke-miterlimit="10" stroke-width="2"/><path d="M74.38,32.5v-10.37H24.58v-4.71h43.91v-6.54h-.19c-1.32-5.66-6.39-9.89-12.45-9.89s-11.13,4.22-12.45,9.89H24.58v-3.4H12.98V47.15h11.6v-3.4h18.82c1.32,5.66,6.39,9.89,12.45,9.89s11.13-4.22,12.45-9.89h.19v-6.54H24.58v-4.71h49.8Z" fill="#231f20" stroke="#fdc614" stroke-miterlimit="10" stroke-width="2"/></svg>
+                </div>
+                <div class="buckle">
+                    <svg id="a" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 82.69 51.13"><path d="M48.94,1c-1.43,8.24-8.59,14.52-17.24,14.52S15.88,9.24,14.46,1H1V50.13H14.46c1.43-8.24,8.59-14.52,17.24-14.52s15.82,6.28,17.24,14.52h20.76V1h-20.76Z" fill="#231f20" stroke="#fdc614" stroke-miterlimit="10" stroke-width="2"/><rect x="69.7" y="2.55" width="11.98" height="46.03" fill="#231f20" stroke="#fdc614" stroke-miterlimit="10" stroke-width="2"/></svg>
+                </div>
+            </div>
 
             <form id="rsvp">
                 <div id="form-body">
-                    <p>Want to never grow up with us? Let us know you'll be there so we can have an accurate headcount.</p>
+                    <p>Want to make it click with us? Let us know you'll be there so we can have an accurate headcount.</p>
                     <div class="form-control">
                         <label for="family-name">Family Name</label>
                         <input type="text" id="family-name" name="family" autocomplete="family-name" />
@@ -176,6 +237,21 @@
                     }).then(() => {
                         document.getElementById('form-body').innerHTML = '<p>Thanks for letting us know. Excited to see you there!</p>';
                     })
+                });
+
+                // Only trigger buckle animation when a buckle row is in the viewport
+                const buckleRows = document.querySelectorAll('.buckle-row');
+                const buckleRowObserver = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('animate');
+                        }
+                    });
+                }, {
+                    threshold: 0.5
+                });
+                buckleRows.forEach((row) => {
+                    buckleRowObserver.observe(row);
                 });
             })();
         </script>
