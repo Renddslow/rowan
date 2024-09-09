@@ -200,7 +200,7 @@
             <h1>Yodelay <span>three</span> hoooooooooo!</h1>
 
             <article class="card">
-                <img src="rowan.png" alt="Rowan at Smokey Mountain National Park on his 3rd Birthday" />
+                <img id="rowan" src="" alt="Rowan at Smokey Mountain National Park on his 3rd Birthday" />
             </article>
             <form id="rsvp">
                 <h2>Rowan's 3rd Birthday Party</h2>
@@ -224,10 +224,24 @@
             </form>
         </div>
         <footer>
-            <img class="goatherd" alt="A goatherd in lederhosen" src="goat-herd.png" />
+            <img id="goatherd" class="goatherd" alt="A goatherd in lederhosen" src="" />
         </footer>
         <script>
             (() => {
+                const rowan = new Image();
+                rowan.src = 'rowan.png';
+                const goatherd = new Image();
+                goatherd.src = 'goat-herd.png';
+
+                rowan.onload = () => {
+                    console.log('😅');
+                    document.querySelector('#rowan').src = 'rowan.png';
+                };
+
+                goatherd.onload = () => {
+                    document.querySelector('#goatherd').src = 'goat-herd.png';
+                }
+
                 document.getElementById('rsvp').addEventListener('submit', (e) => {
                     e.preventDefault();
                     const headcount = e.target.headcount.value;
