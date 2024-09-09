@@ -202,7 +202,8 @@
             <article class="card">
                 <img id="rowan" src="" alt="Rowan at Smokey Mountain National Park on his 3rd Birthday" />
             </article>
-            <form id="rsvp">
+            <form id="rsvp" action="https://formkeep.com/f/d7ed2ba71812" method="post" accept-charset="UTF-8"
+                  enctype="multipart/form-data">
                 <h2>Rowan's 3rd Birthday Party</h2>
                 <p>Friday, September 13th at 4:30–7:00pm</p>
                 <p>8234 N 167th Street<br />Bennington, NE 68007</p>
@@ -234,7 +235,6 @@
                 goatherd.src = 'goat-herd.png';
 
                 rowan.onload = () => {
-                    console.log('😅');
                     document.querySelector('#rowan').src = 'rowan.png';
                 };
 
@@ -243,22 +243,7 @@
                 }
 
                 document.getElementById('rsvp').addEventListener('submit', (e) => {
-                    e.preventDefault();
-                    const headcount = e.target.headcount.value;
-                    const family = e.target.family.value;
-
-                    document.querySelector('form button').innerText = 'Submitting...';
-                    document.querySelector('form button').disabled = true;
-
-                    fetch('/.netlify/functions/notify', {
-                        method: 'POST',
-                        body: JSON.stringify({
-                            headcount,
-                            family
-                        }),
-                    }).then(() => {
-                        document.getElementById('form-body').innerHTML = '<p>Thanks for letting us know. Excited to see you there!</p>';
-                    })
+                    document.getElementById('form-body').innerHTML = '<p>Thanks for letting us know. Excited to see you there!</p>';
                 });
             })();
         </script>
