@@ -246,21 +246,6 @@
                         document.getElementById('form-body').innerHTML = '<p>Thanks for letting us know. Excited to see you there!</p>';
                     })
                 });
-
-                // Only trigger goatherd animation when a buckle row is in the viewport
-                const buckleRows = document.querySelectorAll('.buckle-row');
-                const buckleRowObserver = new IntersectionObserver((entries) => {
-                    entries.forEach((entry) => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('animate');
-                        }
-                    });
-                }, {
-                    threshold: 0.5
-                });
-                buckleRows.forEach((row) => {
-                    buckleRowObserver.observe(row);
-                });
             })();
         </script>
     </body>
