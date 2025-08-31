@@ -16,9 +16,6 @@
                 background: var(--primary);
                 color: var(--text);
                 font-size: 24px;
-                background-image: url("bg.webp");
-                background-size: cover;
-                backdrop-filter: blur(100px);
             }
 
             * {
@@ -29,14 +26,22 @@
                 box-sizing: border-box;
             }
 
+            #wrapper h1, #wrapper article, #wrapper form {
+                position: relative;
+            }
+
+            #wrapper h1, #wrapper article, #wrapper form, #wrapper footer {
+                z-index: 1;
+            }
+
             #wrapper {
                 display: block;
-                max-width: 960px;
                 width: 100%;
-                padding: 24px;
+                padding: 24px 24px 0;
                 margin: 0 auto;
-                background-image: url("bg.webp");
+                background-image: url("metropolis.jpg");
                 background-size: cover;
+                background-position: center;
                 min-height: 100vh;
             }
 
@@ -78,13 +83,15 @@
                 line-height: 0.9;
                 margin-bottom: 56px;
                 overflow-wrap: anywhere;
+                text-shadow: 4px 4px #d30007, -2px -2px #d30007, 2px -2px #d30007, -2px 2px #d30007;
+                color: #ffdd00;
             }
 
             h1 span {
+                text-transform: uppercase;
                 font-weight: 800;
-                line-height: 1.2;
-                margin-left: -15px;
-                color: #dc0047;
+                text-shadow: 4px 4px #ffdd00, -2px -2px #ffdd00, 2px -2px #ffdd00, -2px 2px #ffdd00;
+                color: #d30007;
             }
 
             form {
@@ -100,12 +107,6 @@
                 background: #fff;
                 border-radius: 8px;
                 max-width: 648px;
-            }
-
-            @media screen and (max-width: 767px) {
-                form {
-                    max-width: 285px;
-                }
             }
 
             form p {
@@ -134,7 +135,7 @@
             button {
                 color: #fff;
                 padding: 12px 14px;
-                background: #dc0047;
+                background: #d30007;
                 margin-left: auto;
                 display: block;
                 cursor: pointer;
@@ -178,7 +179,7 @@
 
             @media screen and (max-width: 767px) {
                 footer {
-                    margin-top: -186px;
+                    margin-top: -50px;
                 }
 
                 footer img {
@@ -193,53 +194,52 @@
                 text-align: center;
                 margin-bottom: 24px;
             }
+
+            .gradient {
+                mix-blend-mode: hard-light;
+                background: linear-gradient(to bottom, #baeeff, #00c1ff);
+                position: fixed;
+                top: 0;
+                bottom: 0;
+                width: 100%;
+                left: 0;
+            }
         </style>
     </head>
     <body>
         <div id="wrapper">
-            <h1>Yodelay <span>three</span> hoooooooooo!</h1>
-
+            <div class="gradient"></div>
+            <h1>Soar into <span>Four</span></h1>
             <article class="card">
                 <img id="rowan" src="" alt="Rowan at Smokey Mountain National Park on his 3rd Birthday" />
             </article>
             <form id="rsvp" action="https://formkeep.com/f/d7ed2ba71812" method="post" accept-charset="UTF-8"
                   enctype="multipart/form-data">
-                <h2>Rowan's 3rd Birthday Party</h2>
-                <p>Friday, September 13th at 4:30–7:00pm</p>
+                <h2>Rowan's 4th Birthday Party</h2>
+                <p>Friday, September 6th at 10:30am–12:30pm</p>
                 <p>8234 N 167th Street<br />Bennington, NE 68007</p>
-                <p>Pizza and birthday treats will be provided</p>
-                <p class="note">Please do not bring gifts. We just want to celebrate Rowan's 3rd year and thank each of you for helping us reach this milestone.</p>
+                <p>We'll have water games and a slip n' slide so wear something you don't mind getting wet. Lunch and birthday treats will be provided</p>
+                <p class="note">Please do not bring gifts. We just want to celebrate Rowan's 4th year and thank each of you for helping us reach this milestone.</p>
                 <div class="rule"></div>
-                <div id="form-body">
-                    <p>Don't want a little boy to be a <a href="https://www.youtube.com/watch?v=9vtq9t08ktU" target="_blank">lonely goatherd</a>? Let us know you'll be there so we can have an accurate headcount.</p>
-                    <div class="form-control">
-                        <label for="family-name">Family Name</label>
-                        <input type="text" id="family-name" name="family" required autocomplete="family-name" />
-                    </div>
-                    <div class="form-control">
-                        <label for="headcount">How many are coming with you (a guess is fine)?</label>
-                        <input type="number" id="headcount" name="headcount" required />
-                    </div>
-                    <button type="submit">Submit</button>
-                </div>
+                <p>Text Matt at <a href="sms:+14028850620&body=We'll be there">(402) 885-0620</a> to let us know you're coming.</p>
             </form>
+            <footer>
+                <img id="superman" class="goatherd" alt="Superman" src="" />
+            </footer>
         </div>
-        <footer>
-            <img id="goatherd" class="goatherd" alt="A goatherd in lederhosen" src="" />
-        </footer>
         <script>
             (() => {
                 const rowan = new Image();
                 rowan.src = 'rowan.png';
                 const goatherd = new Image();
-                goatherd.src = 'goat-herd.png';
+                goatherd.src = 'superman.webp';
 
                 rowan.onload = () => {
                     document.querySelector('#rowan').src = 'rowan.png';
                 };
 
                 goatherd.onload = () => {
-                    document.querySelector('#goatherd').src = 'goat-herd.png';
+                    document.querySelector('#superman').src = 'superman.webp';
                 }
 
                 document.getElementById('rsvp').addEventListener('submit', (e) => {
